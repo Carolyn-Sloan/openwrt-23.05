@@ -12,13 +12,14 @@ PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL=https://github.com/jow-/ucode.git
-PKG_SOURCE_DATE:=2023-11-02
-PKG_SOURCE_VERSION:=cfb24ea4f12131dcefe4f1ede2f51d3d16b88dec
-PKG_MIRROR_HASH:=f515a23ab438f92be5788c42b9f614a82e670de2df1c01cd63143cdc77fa24fe
+PKG_SOURCE_DATE:=2024-02-21
+PKG_SOURCE_VERSION:=ba3855ae3775197f3594fc2615cac539075bd2fb
+PKG_MIRROR_HASH:=82b8a73417575b58a234586354eba4d0b10180a80b441cd87a9a554227304d34
 PKG_MAINTAINER:=Jo-Philipp Wich <jo@mein.io>
 PKG_LICENSE:=ISC
 
 PKG_ABI_VERSION:=20230711
+HOST_BUILD_DEPENDS:=libjson-c/host
 
 include $(INCLUDE_DIR)/package.mk
 include $(INCLUDE_DIR)/host-build.mk
@@ -94,7 +95,7 @@ define UcodeModule
  define Package/ucode-mod-$(strip $(1))
   $(Package/ucode/default)
   TITLE+= ($(strip $(1)) module)
-  DEPENDS:=ucode $(3)
+  DEPENDS:=+ucode $(3)
  endef
 
  define Package/ucode-mod-$(strip $(1))/description
